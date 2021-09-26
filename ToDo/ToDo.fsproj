@@ -7,20 +7,25 @@
     <AvailableItemName Include="AvaloniaResource" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
     <AvaloniaResource Include="**\*.xaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaResource Remove="Views\ToDoListViewAxaml.xaml" />
+    <AvaloniaResource Remove="Views\AddItemView.xaml" />
+    <AvaloniaResource Remove="Views\ToDoListView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaXaml Remove="Views\MainWindow.axaml" />
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaXaml Include="Views\ToDoListViewAxaml.xaml">
+    <Compile Include="Models\TodoItem.fs" />
+    <AvaloniaXaml Include="Views\AddItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
+    <Compile Include="Views\AddItemView.xaml.fs" />
+    <AvaloniaXaml Include="Views\ToDoListView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>
     <Compile Include="Views\ToDoListViewAxaml.xaml.fs" />
@@ -29,7 +34,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\avalonia-logo.ico" />
+    <Compile Include="Services\DataBase.fs" />
     <Compile Include="ViewModels\ViewModelBase.fs" />
+    <Compile Include="ViewModels\AddItemViewModel.fs" />
+    <Compile Include="ViewModels\ToDoListViewModel.fs" />
     <Compile Include="ViewModels\MainWindowViewModel.fs" />
     <Compile Include="Views\MainWindow.xaml.fs" />
     <Compile Include="ViewLocator.fs" />

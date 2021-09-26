@@ -5,6 +5,8 @@ open Avalonia.Controls.ApplicationLifetimes
 open Avalonia.Markup.Xaml
 open ViewModels
 open Views
+open ViewModels
+open Services
 
 type App() as self =
     inherit Application()
@@ -14,7 +16,8 @@ type App() as self =
     override x.OnFrameworkInitializationCompleted() =
         match x.ApplicationLifetime with
         | :? IClassicDesktopStyleApplicationLifetime as desktop ->
-             desktop.MainWindow <- new MainWindow(DataContext=MainWindowViewModel())
+             let data = new Database()
+             desktop.MainWindow <- new MainWindow(DataContext=MainWindowViewModel(data))
         | _ -> ()
 
         base.OnFrameworkInitializationCompleted()
